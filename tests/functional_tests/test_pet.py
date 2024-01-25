@@ -1,4 +1,5 @@
 import pytest
+from services.petstore_service import PetStoreService
 
 
 class PetClass:
