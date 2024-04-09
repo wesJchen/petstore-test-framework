@@ -8,10 +8,10 @@ config.read('config.ini')
 # Calling a fixture to set up the api auth token
 @pytest.fixture(scope='session', autouse=True)
 def setup_api_auth(request, pytestconfig):
-    api_key = config['API']['api_key']
-    api_token = config['API']['api_token']
-#    api_key = pytestconfig.getoption('--api-key')
-#    api_token = pytestconfig.getoption('--api-token')
+#    api_key = config['API']['api_key']
+#    api_token = config['API']['api_token']
+    api_key = pytestconfig.getoption('--api-key')
+    api_token = pytestconfig.getoption('--api-token')
 
     # Authentification setup
     headers = {
