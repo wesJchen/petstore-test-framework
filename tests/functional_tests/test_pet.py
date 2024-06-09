@@ -4,14 +4,17 @@ from services.petstore_service import PetStoreService
 
 class PetClass:
 
-    def test_get_pet(self):
+    def test_pets_get_and_retrieve(self):
         
         ### ARRANGE ###
-        num_pets = 10
+        number_of_pets = 10
 
         ### ACT ###
-        for id in range(num_pets):
+        for id in range(number_of_pets):
             status_code, response = PetStoreService.get_pet(id)
 
         ### ASSERT ###
-            assert response["sample_field"] == "sample_test_data"
+            assert status_code == 200
+            
+            # Validate pet id matches value passed in
+            assert response['id'] == id

@@ -11,11 +11,13 @@ class PetStoreService:
         :param pet_id: integer of a pet ID
         :return: Status code and body of valid identifying fields for the pet ID requested
         """
-        status, response = requests.get(f'{PetStoreService.base_url}/v2/pet/{pet_id}')
-        return status, response
+        response = requests.get(f'{PetStoreService.base_url}/v2/pet/{pet_id}')
+        status_code = response.status_code
+        response_json = response.json() if response.content else {}
+        return status_code, response_json
     
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    status, response = PetStoreService.get_pet(0)
-    print(status)
-    print(response)
+#     status_code, response = PetStoreService.get_pet(2)
+#     print(status_code)
+#     print(response)
